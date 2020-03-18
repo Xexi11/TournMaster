@@ -5,9 +5,11 @@ import com.google.gson.JsonObject;
 import java.util.Map;
 
 import cat.udl.tidic.amb.tournmaster.User;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.HeaderMap;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
@@ -22,15 +24,12 @@ public interface UserService {
 
         @Headers({"Content-type:application/json"})
         @POST("/users/register")
-        Call<Void> createUser(@Body User user);
-
-        @Headers({"Content-type:application/json"})
-        @POST("/users/register")
-        Call<Void> createUser1(@Body JsonObject userJson);
-
-        @Headers({"Content-type:application/json"})
-        @POST("/users/register")
         Call<Void> createUser2(@Body JsonObject userJson);
+
+        @Headers({"Content-type:application/json"})
+        @POST("/account/create_token")
+        Call<ResponseBody>createToken(@Header("Authorization") String auth_token);
+
 
 
 }
