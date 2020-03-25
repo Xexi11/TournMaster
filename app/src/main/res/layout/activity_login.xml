@@ -39,7 +39,7 @@
         android:layout_height="wrap_content"
         android:text="¡Inicia sesión!"
         android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView4"
+        app:layout_constraintBottom_toTopOf="@+id/text_mail"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -73,7 +73,7 @@
         app:layout_constraintVertical_bias="0.654" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/text_mail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Correo electrónico:"
@@ -85,7 +85,7 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/text_pass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Contraseña:"
@@ -160,7 +160,7 @@
         android:background="#00897B"
         android:drawableRight="@android:drawable/ic_menu_revert"
         android:onClick="anterior"
-        android:text="Volver"
+        android:text="@string/volver"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.04"

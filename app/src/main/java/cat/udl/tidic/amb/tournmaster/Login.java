@@ -43,6 +43,8 @@ public class Login extends AppCompatActivity {
     private TextView miss_init;
     private TextView users;
     private Button volver;
+    private TextView mail;
+    private TextView passs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +71,9 @@ public class Login extends AppCompatActivity {
         final Button createToken = findViewById(R.id.inciarButton);
         TextView tokenLabel = findViewById(R.id.text_createToken);
         miss_conx = findViewById(R.id.miss_conex);
+        mail= findViewById(R.id.text_mail);
+        passs= findViewById(R.id.text_pass);
+
         //users= findViewById(R.id.user);
         //imatge = findViewById(R.id.user_img);
         miss_init = findViewById(R.id.miss_inici);
@@ -81,6 +86,8 @@ public class Login extends AppCompatActivity {
         miss.setVisibility(View.INVISIBLE);
         miss_init.setVisibility(View.INVISIBLE);
         miss_conx.setVisibility(View.INVISIBLE);
+        mail.setVisibility(View.INVISIBLE);
+        passs.setVisibility(View.INVISIBLE);
 
 
 
