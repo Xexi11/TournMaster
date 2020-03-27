@@ -17,8 +17,13 @@
     <string name="escribe_aqu_tu_contrase_a">Escribe aquí tu contraseña</string>
     <string name="hombre">Hombre</string>
     <string name="selecciona_tu_sexo">Selecciona tu sexo:</string>
+    <string name="rol">tu rol:</string>
+    <string name="tusexo">tu sexo:</string>
     <string name="mujer">Mujer</string>
     <string name="jugador">Jugador</string>
     <string name="selecciona_tu_rol">Selecciona tu rol:</string>
     <string name="volver">Volver</string>
+    <string name="telefono">Telefono</string>
+    <string name="error_conex">Error al registrar</string>
+    <string name="contra">La contraseña no coincide</string>
 </resources>

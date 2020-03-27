@@ -72,7 +72,7 @@ public class Login extends AppCompatActivity {
         TextView tokenLabel = findViewById(R.id.text_createToken);
         miss_conx = findViewById(R.id.miss_conex);
         mail= findViewById(R.id.text_mail);
-        passs= findViewById(R.id.text_pass);
+        passs= findViewById(R.id.text_birthday);
 
         //users= findViewById(R.id.user);
         //imatge = findViewById(R.id.user_img);
@@ -86,8 +86,8 @@ public class Login extends AppCompatActivity {
         miss.setVisibility(View.INVISIBLE);
         miss_init.setVisibility(View.INVISIBLE);
         miss_conx.setVisibility(View.INVISIBLE);
-        mail.setVisibility(View.INVISIBLE);
-        passs.setVisibility(View.INVISIBLE);
+        //mail.setVisibility(View.INVISIBLE);
+        //passs.setVisibility(View.INVISIBLE);
 
 
 
@@ -138,6 +138,8 @@ public class Login extends AppCompatActivity {
         });
 
         if (!token.equals("")){
+            intent = new Intent(Login.this,Perfil.class);
+            startActivity(intent);
 
             tokenLabel.setVisibility(View.INVISIBLE);
             tokenTV.setText(token);
@@ -147,6 +149,7 @@ public class Login extends AppCompatActivity {
             tokenTV.setVisibility(View.INVISIBLE);
             miss_init.setText(getResources().getString(R.string.Tittle));
             miss_init.setVisibility(View.VISIBLE);
+
             // users.setText(usernameET.getText().toString());
         }
 
@@ -172,7 +175,10 @@ public class Login extends AppCompatActivity {
 
                                 String userToken = response.body().string().split(":")[1];
                                 Log.d("MAIN", userToken);
+                                userToken = userToken.substring(2,userToken.length()-2);
                                 mPreferences.edit().putString("token", userToken).apply();
+                                Intent intent = new Intent(Login.this,Perfil.class);
+                                startActivity(intent);
 
 
                             } catch (IOException e) {

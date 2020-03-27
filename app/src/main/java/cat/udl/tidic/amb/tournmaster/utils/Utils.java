@@ -1,9 +1,17 @@
 package cat.udl.tidic.amb.tournmaster.utils;
 
+import org.bouncycastle.crypto.digests.SHA256Digest;
+import org.bouncycastle.crypto.generators.PKCS5S2ParametersGenerator;
+import org.bouncycastle.crypto.params.KeyParameter;
+
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
+import java.util.Locale;
+
 public class Utils {
 
 
-    /*private static String getEncodedHash(String password, String salt, int iterations) {
+    private static String getEncodedHash(String password, String salt, int iterations) {
         PKCS5S2ParametersGenerator gen = new PKCS5S2ParametersGenerator(new SHA256Digest());
         gen.init(password.getBytes(StandardCharsets.UTF_8), salt.getBytes(), iterations);
         byte[] dk = ((KeyParameter) gen.generateDerivedParameters(256)).getKey();
@@ -23,5 +31,5 @@ public class Utils {
 
         return String.format(Locale.ENGLISH,
                 "$%s$%d$%s$%s", algorithm, iterations, salt_hash, hash);
-    }*/
+    }
 }
