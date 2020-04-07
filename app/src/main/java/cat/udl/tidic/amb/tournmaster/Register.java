@@ -26,21 +26,17 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class Register extends AppCompatActivity {
-    private Button volver;
     private UserService userService;
     private EditText name;
     private EditText username;
     private EditText password;
     private EditText passwrod1;
-    private Button iniciar;
     private RadioButton generoM;
     private RadioButton generoH;
     private RadioButton rolP;
     private RadioButton rolO;
     String genero;
     String rol;
-    private TextView prueba1;
-    private TextView prueba2;
     private ImageView img1;
     private TextView miss;
     private TextView error_con;
@@ -54,18 +50,17 @@ public class Register extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        volver = findViewById(R.id.btn_volver);
+
         name = findViewById(R.id.nombre2);
         username = findViewById(R.id.nombre);
         password = findViewById(R.id.contraseña);
         passwrod1 = findViewById(R.id.contraseña2);
-        iniciar = findViewById(R.id.inciarButton);
+        Button iniciar = findViewById(R.id.inciarButton);
         generoM = findViewById(R.id.btn_mujer);
         generoH = findViewById(R.id.btn_hombre);
         rolP = findViewById(R.id.check_player);
         rolO= findViewById(R.id.check_owner);
-        prueba1 = findViewById(R.id.prueba_genero);
-        prueba2 = findViewById(R.id.prueba_rol);
+
         miss = findViewById(R.id.contra_error);
         img1 = findViewById(R.id.img_tick);
         error_con = findViewById(R.id.error_regist);
@@ -202,11 +197,5 @@ public class Register extends AppCompatActivity {
         });
     }
 
-    public void anterior(View view){
-
-        Intent anterior = new Intent(Register.this, MainActivity.class);
-        startActivity(anterior);
-
-    }
 
 }

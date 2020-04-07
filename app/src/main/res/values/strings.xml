@@ -26,4 +26,22 @@
     <string name="telefono">Telefono</string>
     <string name="error_conex">Error al registrar</string>
     <string name="contra">La contraseña no coincide</string>
+    <string name="iniciar_sesi_n">Iniciar sesión</string>
+    <string name="tourmasterlogo">TourMasterLOGO</string>
+    <string name="inicia_sesi_n">¡Inicia sesión!</string>
+    <string name="iniciar_sesi_n">Iniciar sesión</string>
+    <string name="registrarse">Registrarse</string>
+    <string name="bienvenido">¡BIENVENIDO!</string>
+    <string name="gas_al_p_del">¡Gas al pádel!</string>
+    <string name="ya_tienes_cuenta">¿Ya tienes cuenta?</string>
+    <string name="editar_perfil">Editar perfil</string>
+    <string name="nombre_usuario">Nombre Usuario</string>
+    <string name="fotousuario">fotousuario</string>
+    <string name="tu_correo_electr_nico">Tu Correo electrónico:</string>
+    <string name="cerrar_sesi_n">Cerrar Sesión</string>
+    <string name="escribe_aqu_tu_correo">Escribe aquí tu correo</string>
+    <string name="organizador">Organizador</string>
+    <string name="mujer">Mujer</string>
+    <string name="hombre">Hombre</string>
+    <string name="tick">tick</string>
 </resources>

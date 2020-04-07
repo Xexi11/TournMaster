@@ -9,21 +9,18 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button login;
-    private Button register;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        login = findViewById(R.id.inciarButton);
-        register = findViewById(R.id.registerButton);
+        Button login = findViewById(R.id.inciarButton);
+        Button register = findViewById(R.id.registerButton);
 
 
     }
+
     public void login(View view){
 
         Intent intent = new Intent(MainActivity.this,Login.class);

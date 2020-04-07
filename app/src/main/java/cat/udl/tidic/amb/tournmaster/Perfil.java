@@ -24,11 +24,10 @@ public class Perfil extends AppCompatActivity {
     private TextView mail;
     private TextView rols;
     private TextView sexo;
-    private TextView fecha;
-    private TextView telf;
+
+
     private UserService userService;
     private SharedPreferences mPreferences;
-    private Button cerrar;
     private String token;
 
     @Override
@@ -36,13 +35,13 @@ public class Perfil extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil);
 
-        Intent intent = getIntent();
+
 
         user = findViewById(R.id.text_users);
         mail = findViewById(R.id.text_mail);
         rols = findViewById(R.id.rol);
         sexo = findViewById(R.id.text_sexo);
-        cerrar = findViewById(R.id.btn_tencarSessio);
+
 
         userService = RetrofitClientInstance.
                 getRetrofitInstance().create(UserService.class);

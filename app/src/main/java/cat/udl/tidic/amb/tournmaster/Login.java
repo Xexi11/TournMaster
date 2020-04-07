@@ -20,6 +20,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.util.Objects;
 
 import cat.udl.tidic.amb.tournmaster.preferences.PreferencesProvider;
 import cat.udl.tidic.amb.tournmaster.services.UserService;
@@ -34,25 +35,19 @@ public class Login extends AppCompatActivity {
     private EditText usernameET;
     private EditText passwordET;
     private SharedPreferences mPreferences;
-    private String token;
     private TextView miss;
     private TextView miss_conx;
     private String username;
     private String pass;
-    private ImageView imatge;
-    private TextView miss_init;
-    private TextView users;
-    private Button volver;
-    private TextView mail;
-    private TextView passs;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        Intent intent = getIntent();
+        Intent intent;
 
-        volver = findViewById(R.id.btn_volver);
+
 
 
         userService = RetrofitClientInstance.
@@ -71,14 +66,14 @@ public class Login extends AppCompatActivity {
         final Button createToken = findViewById(R.id.inciarButton);
         TextView tokenLabel = findViewById(R.id.text_createToken);
         miss_conx = findViewById(R.id.miss_conex);
-        mail= findViewById(R.id.text_mail);
-        passs= findViewById(R.id.text_birthday);
+
+
 
         //users= findViewById(R.id.user);
         //imatge = findViewById(R.id.user_img);
-        miss_init = findViewById(R.id.miss_inici);
+        TextView miss_init = findViewById(R.id.miss_inici);
         miss = findViewById(R.id.missatge_error);
-        token = this.mPreferences.getString("token","");
+        String token = this.mPreferences.getString("token", "");
         tokenLabel.setVisibility(View.INVISIBLE);
         tokenTV.setVisibility(View.INVISIBLE);
         //imatge.setVisibility(View.INVISIBLE);
@@ -196,7 +191,7 @@ public class Login extends AppCompatActivity {
 
                     @Override
                     public void onFailure(Call<ResponseBody> call, Throwable t) {
-                        Log.d("MAIN", t.getMessage());
+                        Log.d("MAIN", Objects.requireNonNull(t.getMessage()));
                         //ficar error de conexió
                         miss_conx.setText(getResources().getString(R.string.Error_Conex));
                         miss_conx.setVisibility(View.VISIBLE);
@@ -218,10 +213,5 @@ public class Login extends AppCompatActivity {
         });
     }
 
-    public void anterior(View view){
-        Intent anterior = new Intent(Login.this, MainActivity.class);
-        startActivity(anterior);
-
-    }
 
 }

@@ -39,7 +39,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.007"
-        app:srcCompat="@mipmap/tournmaster" />
+        app:srcCompat="@mipmap/tournmaster"
+        android:contentDescription="@string/tourmasterlogo" />
 
     <TextView
         android:id="@+id/text_users"
@@ -78,7 +79,8 @@
         app:layout_constraintHorizontal_bias="0.529"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.197" />
+        app:layout_constraintVertical_bias="0.197"
+        android:autofillHints="" />
 
     <TextView
         android:id="@+id/text_birthday"
@@ -121,14 +123,15 @@
         android:layout_width="224dp"
         android:layout_height="46dp"
         android:ems="10"
-        android:hint="Escribe aquí tu correo"
+        android:hint="@string/escribe_aqu_tu_correo"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="@+id/inciarButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.529"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.291" />
+        app:layout_constraintVertical_bias="0.291"
+        android:autofillHints="" />
 
     <TextView
         android:id="@+id/textView9"
@@ -169,7 +172,7 @@
         android:id="@+id/check_owner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Organizador"
+        android:text="@string/organizador"
         app:layout_constraintBottom_toTopOf="@+id/inciarButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.288"
@@ -177,27 +180,14 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.884" />
 
-    <Button
-        android:id="@+id/btn_volver"
-        android:layout_width="89dp"
-        android:layout_height="41dp"
-        android:background="#00897B"
-        android:drawableRight="@android:drawable/ic_menu_revert"
-        android:onClick="anterior"
-        android:text="@string/volver"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.031"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.097" />
+
 
     <RadioButton
         android:id="@+id/btn_hombre"
         android:layout_width="91dp"
         android:layout_height="21dp"
-        android:onClick=""
-        android:text="Hombre"
+
+        android:text="@string/hombre"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.306"
@@ -209,8 +199,8 @@
         android:id="@+id/btn_mujer"
         android:layout_width="81dp"
         android:layout_height="20dp"
-        android:onClick=""
-        android:text="Mujer"
+
+        android:text="@string/mujer"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.666"
@@ -240,7 +230,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.474"
         app:srcCompat="@mipmap/tick"
-        tools:visibility="visible" />
+        tools:visibility="visible"
+        android:contentDescription="@string/tick" />
 
     <TextView
         android:id="@+id/contra_error"
@@ -266,7 +257,8 @@
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.386" />
+        app:layout_constraintVertical_bias="0.386"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/contraseña2"
@@ -280,7 +272,8 @@
         app:layout_constraintHorizontal_bias="0.796"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.478" />
+        app:layout_constraintVertical_bias="0.478"
+        android:autofillHints="" />
 
     <TextView
         android:id="@+id/error_regist"

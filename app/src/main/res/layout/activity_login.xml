@@ -17,7 +17,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.007"
-        app:srcCompat="@mipmap/tournmaster" />
+        app:srcCompat="@mipmap/tournmaster"
+        android:contentDescription="@string/tourmasterlogo" />
 
     <Button
         android:id="@+id/inciarButton"
@@ -25,7 +26,7 @@
         android:layout_height="67dp"
         android:layout_marginBottom="96dp"
         android:background="@drawable/borde_redondo"
-        android:text="Iniciar sesión"
+        android:text="@string/iniciar_sesi_n"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -36,13 +37,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="220dp"
-        android:text="¡Inicia sesión!"
+        android:text="@string/inicia_sesi_n"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
+    <EditTxext
         android:id="@+id/nombre"
         android:layout_width="214dp"
         android:layout_height="45dp"
@@ -111,22 +112,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.718" />
 
-    <Button
-        android:id="@+id/btn_volver"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:background="#00897B"
-        android:drawableRight="@android:drawable/ic_menu_revert"
-        android:onClick="anterior"
-        android:text="@string/volver"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.04"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
     <TextView
         android:id="@+id/text_correo"
         android:layout_width="wrap_content"
@@ -162,7 +147,8 @@
         app:layout_constraintHorizontal_bias="0.469"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.65" />
+        app:layout_constraintVertical_bias="0.65"
+        android:autofillHints="" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
