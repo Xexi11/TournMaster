@@ -11,7 +11,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,7 +19,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.util.Objects;
 
 import cat.udl.tidic.amb.tournmaster.preferences.PreferencesProvider;
 import cat.udl.tidic.amb.tournmaster.services.UserService;
@@ -39,13 +37,15 @@ public class Login extends AppCompatActivity {
     private TextView miss_conx;
     private String username;
     private String pass;
+    private Intent intent;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        Intent intent;
+
+        intent = getIntent();
 
 
 
@@ -73,7 +73,7 @@ public class Login extends AppCompatActivity {
         //imatge = findViewById(R.id.user_img);
         TextView miss_init = findViewById(R.id.miss_inici);
         miss = findViewById(R.id.missatge_error);
-        String token = this.mPreferences.getString("token", "");
+        final String token = this.mPreferences.getString("token", "");
         tokenLabel.setVisibility(View.INVISIBLE);
         tokenTV.setVisibility(View.INVISIBLE);
         //imatge.setVisibility(View.INVISIBLE);
@@ -133,6 +133,7 @@ public class Login extends AppCompatActivity {
         });
 
         if (!token.equals("")){
+
             intent = new Intent(Login.this,Perfil.class);
             startActivity(intent);
 
@@ -156,56 +157,59 @@ public class Login extends AppCompatActivity {
                 String password = passwordET.getText().toString();
                 String token_decoded = (username + ":" + password);
                 System.out.println(token_decoded);
-                byte[] bytes = token_decoded.getBytes(StandardCharsets.UTF_8);
-                String _token = Base64.encodeToString(bytes, Base64.DEFAULT);
-                _token = ("Authentication: " + _token).trim();
-                Call<ResponseBody> call_post = userService.createToken(_token);
-                call_post.enqueue(new Callback<ResponseBody>() {
+                if(!token_decoded.isEmpty()) {
+                    byte[] bytes = token_decoded.getBytes(StandardCharsets.UTF_8);
+                    String _token = Base64.encodeToString(bytes, Base64.DEFAULT);
+                    _token = ("Authentication: " + _token).trim();
+                    Call<ResponseBody> call_post = userService.createToken(_token);
+                    call_post.enqueue(new Callback<ResponseBody>() {
 
-                    @Override
-                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                        @Override
+                        public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
 
-                        if (response.body() != null) {
-                            try {
+                            if (response.body() != null) {
+                                try {
 
-                                String userToken = response.body().string().split(":")[1];
-                                Log.d("MAIN", userToken);
-                                userToken = userToken.substring(2,userToken.length()-2);
-                                mPreferences.edit().putString("token", userToken).apply();
-                                Intent intent = new Intent(Login.this,Perfil.class);
-                                startActivity(intent);
-
-
-                            } catch (IOException e) {
-                                e.printStackTrace();
+                                    String userToken = response.body().string().split(":")[1];
+                                    Log.d("MAIN", userToken);
+                                    userToken = userToken.substring(2, userToken.length() - 2);
+                                    mPreferences.edit().putString("token", userToken).apply();
+                                    Toast.makeText(getApplicationContext(),
+                                            "Token obtained properly", Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(Login.this, Perfil.class);
+                                    startActivity(intent);
 
 
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+
+
+                                }
+                            } else {
+
+                                miss.setText(getResources().getString(R.string.Error_Login));
+                                miss.setVisibility(View.VISIBLE);
                             }
                         }
-                        else{
 
-                            miss.setText(getResources().getString(R.string.Error_Login));
-                            miss.setVisibility(View.VISIBLE);
+                        @Override
+                        public void onFailure(Call<ResponseBody> call, Throwable t) {
+                            // Log.d("MAIN", Objects.requireNonNull(t.getMessage()));
+                            //ficar error de conexió
+
+                            miss_conx.setText(getResources().getString(R.string.Error_Conex));
+                            miss_conx.setVisibility(View.VISIBLE);
+
+
                         }
-                    }
-
-                    @Override
-                    public void onFailure(Call<ResponseBody> call, Throwable t) {
-                        Log.d("MAIN", Objects.requireNonNull(t.getMessage()));
-                        //ficar error de conexió
-                        miss_conx.setText(getResources().getString(R.string.Error_Conex));
-                        miss_conx.setVisibility(View.VISIBLE);
+                    });
+                }
+                else{
+                    miss_conx.setText(getResources().getString(R.string.Error_Conex));
+                    miss_conx.setVisibility(View.VISIBLE);
+                }
 
 
-
-
-
-                    }
-                });
-
-
-                Toast.makeText(getApplicationContext(),
-                        "Token obtained properly", Toast.LENGTH_SHORT).show();
             }
 
 
