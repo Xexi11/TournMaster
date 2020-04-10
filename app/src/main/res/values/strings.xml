@@ -22,6 +22,8 @@
     <string name="mujer">Mujer</string>
     <string name="jugador">Jugador</string>
     <string name="selecciona_tu_rol">Selecciona tu rol:</string>
+    ç
+    <string name="tu_rol">tu rol:</string>
     <string name="volver">Volver</string>
     <string name="telefono">Telefono</string>
     <string name="error_conex">Error al registrar</string>

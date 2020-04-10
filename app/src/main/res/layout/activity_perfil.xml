@@ -25,14 +25,14 @@
         android:id="@+id/imageView"
         android:layout_width="134dp"
         android:layout_height="75dp"
+        android:contentDescription="@string/tourmasterlogo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.935"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.007"
-        app:srcCompat="@mipmap/tournmaster"
-        android:contentDescription="@string/tourmasterlogo" />
+        app:srcCompat="@mipmap/tournmaster" />
 
     <TextView
         android:id="@+id/text_users"
@@ -51,14 +51,14 @@
         android:id="@+id/img_user"
         android:layout_width="84dp"
         android:layout_height="81dp"
+        android:contentDescription="@string/fotousuario"
         android:src="@mipmap/jugadora1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.241"
-        android:contentDescription="@string/fotousuario" />
+        app:layout_constraintVertical_bias="0.241" />
 
     <TextView
         android:id="@+id/text_correo"
@@ -88,7 +88,7 @@
         android:id="@+id/usuario_rol"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/selecciona_tu_rol"
+        android:text="@string/tu_rol"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
@@ -105,16 +105,16 @@
         android:text="@string/cerrar_sesi_n"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.932" />
+        app:layout_constraintVertical_bias="0.86" />
 
     <EditText
         android:id="@+id/text_mail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
+        android:autofillHints=""
         android:ems="10"
         android:enabled="false"
         android:inputType="textPersonName"
@@ -122,13 +122,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_correo"
-        app:layout_constraintVertical_bias="0.0"
-        android:autofillHints="" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <EditText
         android:id="@+id/text_sexo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:autofillHints=""
         android:ems="10"
         android:enabled="false"
         android:inputType="textPersonName"
@@ -136,13 +136,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sexo_usuario"
-        app:layout_constraintVertical_bias="0.033"
-        android:autofillHints="" />
+        app:layout_constraintVertical_bias="0.033" />
 
     <EditText
         android:id="@+id/rol"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:autofillHints=""
         android:ems="10"
         android:enabled="false"
         android:inputType="textPersonName"
@@ -150,7 +150,51 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/usuario_rol"
-        app:layout_constraintVertical_bias="0.073"
-        android:autofillHints="" />
+        app:layout_constraintVertical_bias="0.073" />
+
+    <LinearLayout
+        android:layout_width="409dp"
+        android:layout_height="60dp"
+        android:background="#6595C0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.997">
+
+        <ImageView
+            android:id="@+id/btn_torneo"
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="Inico"
+            app:srcCompat="@mipmap/copa" />
+
+        <ImageView
+            android:id="@+id/btn_partidos"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="partidos"
+            app:srcCompat="@mipmap/pelotaaas" />
+
+        <ImageView
+            android:id="@+id/btn_search"
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="search"
+            app:srcCompat="@mipmap/search" />
+
+        <ImageView
+            android:id="@+id/btn_perfil"
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="perfil"
+            app:srcCompat="@mipmap/user" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

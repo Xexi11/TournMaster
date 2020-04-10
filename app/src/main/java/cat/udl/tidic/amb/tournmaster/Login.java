@@ -134,7 +134,7 @@ public class Login extends AppCompatActivity {
 
         if (!token.equals("")){
 
-            intent = new Intent(Login.this,Perfil.class);
+            intent = new Intent(Login.this,Inicio.class);
             startActivity(intent);
 
             tokenLabel.setVisibility(View.INVISIBLE);
@@ -176,7 +176,7 @@ public class Login extends AppCompatActivity {
                                     mPreferences.edit().putString("token", userToken).apply();
                                     Toast.makeText(getApplicationContext(),
                                             "Token obtained properly", Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(Login.this, Perfil.class);
+                                    Intent intent = new Intent(Login.this, Inicio.class);
                                     startActivity(intent);
 
 

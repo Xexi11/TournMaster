@@ -5,7 +5,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -144,6 +143,26 @@ public class Perfil extends AppCompatActivity {
 
             }
         });
+    }
+    public void Inico (View view){
+
+        Intent intent = new Intent(Perfil.this,Inicio.class);
+        startActivity(intent);
+    }
+    public void partidos (View view){
+
+        Intent intent = new Intent(Perfil.this,Partidos.class);
+        startActivity(intent);
+    }
+    public void search (View view){
+
+        Intent intent = new Intent(Perfil.this,Search.class);
+        startActivity(intent);
+    }
+    public void perfil (View view){
+
+        Intent intent = new Intent(Perfil.this,Perfil.class);
+        startActivity(intent);
     }
 
 }
