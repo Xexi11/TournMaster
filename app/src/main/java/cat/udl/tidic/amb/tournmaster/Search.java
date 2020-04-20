@@ -32,7 +32,7 @@ public class Search extends AppCompatActivity {
     private String token;
     private String searching;
     private ArrayAdapter adaptador;
-    private String prueba[];
+    private List<JsonObject> usuaris;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,22 +59,8 @@ public class Search extends AppCompatActivity {
                 if(response.code()==200){
 
                     List<JsonObject> userJson = response.body();
-                    String []taulausers = new String[userJson.size()];
-                    prueba = new String[userJson.size()];
-                    int cont=0;
-
-
-                    for(int i =0; i< userJson.size();i++){
-                        cont++;
-                        String namess = getUsername(userJson.get(i));
-                        taulausers[i]=namess;
-                    }
-
-                        prrueba(taulausers);
-
-
-
-                    System.out.println(taulausers[1]);
+                    usuaris = userJson;
+                    llista();
 
                 }
             }
@@ -85,7 +71,7 @@ public class Search extends AppCompatActivity {
             }
         });
 
-
+        listview.setAdapter(new ArrayAdapter<JsonObject>(this, android.R.layout.simple_list_item_1, usuaris));
 
     }
     public void Inico (View view){
@@ -108,30 +94,13 @@ public class Search extends AppCompatActivity {
         Intent intent = new Intent(Search.this,Perfil.class);
         startActivity(intent);
     }
+    public void llista (){
 
-
-
-    public String getUsername(JsonObject user){
-
-        String name = user.get("username").toString();
-        name = atributs(name);
-
-        for(int i=0;i<prueba.length;i++){
-            prueba[i]=name;
-        }
-        System.out.println(prueba[0]);
-
-        return name;
+        listview.setAdapter(new ArrayAdapter<JsonObject>(this, android.R.layout.simple_list_item_1, usuaris));
 
     }
-    public void prrueba(String[] pep){
 
 
-        listview.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, pep));
-
-
-
-    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);
