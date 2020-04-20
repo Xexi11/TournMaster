@@ -2,6 +2,8 @@ package cat.udl.tidic.amb.tournmaster.services;
 
 import com.google.gson.JsonObject;
 
+import java.util.List;
+
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -19,6 +21,9 @@ public interface UserService {
         @GET("/account/profile")
         Call<JsonObject> getUserProfile(@Header("Authorization") String auth_token);
 
+        @GET("/users")
+        Call<List<JsonObject>> getUsers(@Header("Authorization") String auth_token);
+
         @Headers({"Content-type:application/json"})
         @POST("/users/register")
         Call<Void> createUser(@Body JsonObject userJson);
@@ -30,6 +35,7 @@ public interface UserService {
 
         @DELETE("account/delete_token")
         Call<ResponseBody>deleteToken(@Header("Authorization") String auth_token);
+
 
 
 
