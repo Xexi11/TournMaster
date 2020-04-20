@@ -44,4 +44,11 @@
     <string name="organizador">Organizador</string>
     <string name="tick">tick</string>
     <string name="miss_error_null">Omple tots els camps del formulari</string>
+    <string name="fecha_de_nacimiento">Fecha de nacimiento</string>
+    <string name="posici_n_en_la_pista">Posición en la pista</string>
+    <string name="tu_pareja_favorita">Tu pareja favorita</string>
+    <string name="tiempo_jugado">Tiempo jugado</string>
+    <string name="golpeo_preferido">Golpeo preferido</string>
+    <string name="tu_club">Tu club</string>
+    <string name="licencia">Licencia</string>
 </resources>
