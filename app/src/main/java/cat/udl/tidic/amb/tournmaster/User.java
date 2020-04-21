@@ -6,6 +6,8 @@ import com.google.gson.annotations.SerializedName;
 
 public class User {
 
+    @SerializedName("id")
+    private int id;
     @SerializedName("username")
     private String username;
     @SerializedName("email")
@@ -102,5 +104,37 @@ public class User {
     @Override
     public String toString(){
         return this.name + " " + this.surname;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+
+        // If the object is compared with itself then return true
+        if (o == this) {
+            return true;
+        }
+
+        /* Check if o is an instance of Complex or not
+          "null instanceof [type]" also returns false */
+        if (!(o instanceof User)) {
+            return false;
+        }
+
+        // typecast o to Complex so that we can compare data members
+        User e = (User) o;
+
+        // Compare the data members and return accordingly
+        return this.id == e.getId()
+                && this.username.equals(e.getUsername())
+                && this.name.equals(e.getName());
+
     }
 }
