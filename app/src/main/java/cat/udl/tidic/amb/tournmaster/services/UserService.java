@@ -4,6 +4,7 @@ import com.google.gson.JsonObject;
 
 import java.util.List;
 
+import cat.udl.tidic.amb.tournmaster.User;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -22,7 +23,7 @@ public interface UserService {
         Call<JsonObject> getUserProfile(@Header("Authorization") String auth_token);
 
         @GET("/users")
-        Call<List<JsonObject>> getUsers(@Header("Authorization") String auth_token);
+        Call<List<User>> getUsers(@Header("Authorization") String auth_token);
 
         @Headers({"Content-type:application/json"})
         @POST("/users/register")
