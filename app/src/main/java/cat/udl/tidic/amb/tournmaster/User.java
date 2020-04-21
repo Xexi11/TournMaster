@@ -6,8 +6,6 @@ import com.google.gson.annotations.SerializedName;
 
 public class User {
 
-    @SerializedName("created_at")
-    private String created_at;
     @SerializedName("username")
     private String username;
     @SerializedName("email")
@@ -25,11 +23,9 @@ public class User {
     @SerializedName("password")
     private String password;
 
-    public User() {
-    }
 
-    public User(String created_at, String username, String email, String name, String surname, String birthday, String genere,String password) {
-        this.created_at = created_at;
+
+    public User( String username, String email, String name, String surname, String genere,String password) {
         this.username = username;
         this.email = email;
         this.name = name;
