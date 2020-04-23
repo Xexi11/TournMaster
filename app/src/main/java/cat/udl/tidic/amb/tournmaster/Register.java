@@ -63,6 +63,7 @@ public class Register extends AppCompatActivity {
         error_null = findViewById(R.id.miss_error_null);
 
 
+
         miss = findViewById(R.id.contra_error);
         img1 = findViewById(R.id.img_tick);
         error_con = findViewById(R.id.error_regist);

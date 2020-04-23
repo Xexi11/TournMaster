@@ -22,7 +22,6 @@
     <string name="mujer">Mujer</string>
     <string name="jugador">Jugador</string>
     <string name="selecciona_tu_rol">Selecciona tu rol:</string>
-    ç
     <string name="tu_rol">tu rol:</string>
     <string name="volver">Volver</string>
     <string name="telefono">Telefono</string>
@@ -51,4 +50,13 @@
     <string name="golpeo_preferido">Golpeo preferido</string>
     <string name="tu_club">Tu club</string>
     <string name="licencia">Licencia</string>
+    <string name="Actualizar_perfil">Actualizar_perfil</string>
+    <string name="cancelar_edicion">Cancelar Edición</string>
+    <string name="tus_datos">Tus Datos</string>
+    <string name="tu_surname">Apellido del usuario</string>
+    <string name="pos_derecha">Derecha</string>
+    <string name="pos_izquierda">Izquierda</string>
+    <string name="Posicion">Tu Posición</string>
+    <string name="Nombre_real">Tu Nombre</string>
+
 </resources>

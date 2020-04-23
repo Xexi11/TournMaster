@@ -2,16 +2,28 @@ package cat.udl.tidic.amb.tournmaster;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.gson.JsonObject;
+
+import java.io.IOException;
+import java.util.Objects;
 
 import cat.udl.tidic.amb.tournmaster.preferences.PreferencesProvider;
 import cat.udl.tidic.amb.tournmaster.services.UserService;
@@ -28,13 +40,23 @@ public class Perfil extends AppCompatActivity {
     private EditText name;
     private EditText surname;
     private EditText birthday;
-    private EditText position;
     private EditText prefsmash;
     private EditText timeplay;
     private EditText matchaname;
     private EditText club;
     private EditText license;
     private Button iniciar;
+    private Button cancelar;
+    private Button actualizar;
+    private ImageView img_photo;
+    private EditText position;
+    private EditText phone;
+    private RadioButton rigth;
+    private RadioButton left;
+    private String valuePos;
+
+
+
 
 
     private UserService userService;
@@ -45,23 +67,89 @@ public class Perfil extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        bottomNavigationView.setSelectedItemId(R.id.Perfil);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                switch(menuItem.getItemId()){
+                    case R.id.Inicio:
+                        startActivity(new Intent(getApplicationContext(),
+                                Inicio.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.Partidos:
+                        startActivity(new Intent(getApplicationContext(),
+                                Partidos.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.Buscar:
+                        startActivity(new Intent(getApplicationContext(),
+                                Search.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.Perfil:
+                        startActivity(new Intent(getApplicationContext(),
+                                Perfil.class));
+                        overridePendingTransition(0,0);
+                        return true;
 
+                }
+                return false;
+            }
+        });
 
-
+        img_photo = findViewById(R.id.img_perfil);
         user = findViewById(R.id.text_users);
         mail = findViewById(R.id.text_mail);
         rol = findViewById(R.id.text_rol);
         sex = findViewById(R.id.text_sexo);
-        name = findViewById(R.id.text_name);
-        surname = findViewById(R.id.text_surname);
+        name = findViewById(R.id.ed_name);
+        surname = findViewById(R.id.ed_surname);
         birthday = findViewById(R.id.text_birthday);
-        position = findViewById(R.id.text_position);
-        prefsmash = findViewById(R.id.text_prefsmash);
-        timeplay = findViewById(R.id.text_timeplay);
-        matchaname = findViewById(R.id.text_matchname);
-        club = findViewById(R.id.text_club);
-        license = findViewById(R.id.text_license);
+        prefsmash = findViewById(R.id.ed_smash);
+        timeplay = findViewById(R.id.ed_timeplay);
+        matchaname = findViewById(R.id.ed_matchname);
+        club = findViewById(R.id.ed_club);
+        license = findViewById(R.id.ed_license);
         iniciar = findViewById(R.id.inciarButton);
+        actualizar = findViewById(R.id.btn_actualizarperfil);
+        cancelar = findViewById(R.id.btn_cancelar);
+        iniciar = findViewById(R.id.inciarButton);
+        position = findViewById(R.id.ed_position);
+        phone = findViewById(R.id.ed_phone);
+        rigth = findViewById(R.id.rdbtn_right);
+        left = findViewById(R.id.rdbtn_left);
+
+        img_photo.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                cargarImagen();
+            }
+        });
+
+        rigth.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                left.setChecked(false);
+                rigth.setChecked(true);
+                valuePos = "R";
+
+                Log.d("POSIC",valuePos);
+            }
+        });
+        left.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                left.setChecked(true);
+                rigth.setChecked(false);
+                valuePos = "L";
+            Log.d("POSIC",valuePos);
+            }
+        });
+
+
+
+
 
         userService = RetrofitClientInstance.
                 getRetrofitInstance().create(UserService.class);
@@ -80,6 +168,18 @@ public class Perfil extends AppCompatActivity {
                     JsonObject userJson = response.body();
                     String nom_user = userJson.get("username").toString();
                     user.setText(atributs(nom_user));
+                    String user_surname = userJson.get("surname").toString();
+                    surname.setText(atributs(user_surname));
+                    String user_name = userJson.get("name").toString();
+                    name.setText(atributs(user_name));
+                    String user_prefplayer = userJson.get("matchname").toString();
+                    matchaname.setText(atributs(user_prefplayer));
+                    String user_smash = userJson.get("prefsmash").toString();
+                    prefsmash.setText(atributs(user_smash));
+                    String user_club = userJson.get("club").toString();
+                    club.setText(atributs(user_club));
+                    String user_phone= (userJson.get("phone").toString());
+                    phone.setText(atributs(user_phone));
 
                     String user_mail = userJson.get("email").toString();
                     mail.setText(atributs(user_mail));
@@ -94,6 +194,30 @@ public class Perfil extends AppCompatActivity {
                     else{
                         sex.setText("Mujer");
                     }
+                    String user_license= userJson.get("license").toString();
+                    user_license = user_license.substring(1,user_license.length()-1);
+                    Log.d("TAG",user_license);
+
+                    if(user_license.equals("Y")){
+                        Log.d("TAG","ENTRA");
+                        license.setText("Tienes licencia");
+                    }
+                    else{
+                        license.setText("No tienes liencia");
+                    }
+                    String user_position= userJson.get("position").toString();
+                    user_position = user_position.substring(1,user_position.length()-1);
+                    Log.d("TAG",user_position);
+
+                    if(user_position.equals("R")){
+                        Log.d("TAG","ENTRA");
+                        position.setText("Derecha");
+                        rigth.setSelected(true);
+                    }
+                    else{
+                        position.setText("Izquierda");
+                        left.setSelected(true);
+                    }
                     Log.d("TAG",user_sex);
                     String user_rol = userJson.get("rol").toString();
                     Log.d("rol",user_rol);
@@ -106,42 +230,59 @@ public class Perfil extends AppCompatActivity {
                     else{
                         rol.setText("Jugador");
                     }
-                    String name_user = userJson.get("name").toString();
-                    if(name_user.equals("")) {
-                        name.setText(atributs(nom_user));
-                    }
-                    String surname_user = userJson.get("surname").toString();
-                    if(surname_user.equals("")) {
-                        surname.setText(atributs(nom_user));
-                    }
-                    String birthday_user = userJson.get("birthdate").toString();
-                    if(birthday_user.equals("")) {
-                        birthday.setText(atributs(nom_user));
-                    }
-                    String position_user = userJson.get("position").toString();
-                    if(position_user.equals("")) {
-                        position.setText(atributs(nom_user));
-                    }
-                    String prefsmash_user = userJson.get("prefsmash").toString();
-                    if(prefsmash_user.equals("")) {
-                        prefsmash.setText(atributs(nom_user));
-                    }
-                    String timeplay_user = userJson.get("timeplay").toString();
-                    if(timeplay_user.equals("")) {
-                        timeplay.setText(atributs(nom_user));
-                    }
-                    String matchname_user = userJson.get("matchname").toString();
-                    if(matchname_user.equals("")) {
-                        matchaname.setText(atributs(nom_user));
-                    }
-                    String club_user = userJson.get("club").toString();
-                    if(club_user.equals("")) {
-                        club.setText(atributs(nom_user));
-                    }
-                    String license_user = userJson.get("license").toString();
-                    if(license_user.equals("")) {
-                        license.setText(atributs(nom_user));
-                    }
+                    actualizar.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            JsonObject user_json = new JsonObject();
+                            try {
+
+                                    user_json.addProperty("username", name.getText().toString());
+                                    user_json.addProperty("surname", surname.getText().toString());
+                                    user_json.addProperty("mail", mail.getText().toString());
+                                    user_json.addProperty("phone", phone.getText().toString());
+                                    user_json.addProperty("matchname", matchaname.getText().toString());
+                                    user_json.addProperty("prefsmash", prefsmash.getText().toString());
+                                    user_json.addProperty("phone", phone.getText().toString());
+                                    user_json.addProperty("club", club.getText().toString());
+
+
+                                    user_json.addProperty("position", valuePos);
+
+
+                                    System.out.println("Debe selecionar una posicion");
+
+                                Call<Void>call = userService.updateUser(user_json);
+                                call.enqueue(new Callback<Void>() {
+                                    @Override
+                                    public void onResponse(Call<Void> call, Response<Void> response) {
+                                        if (response.code() == 200) {
+                                            System.out.println("entras?");
+                                            Toast.makeText(Perfil.this, "Properties Changed", Toast.LENGTH_SHORT).show();
+                                            Intent intent = new Intent(Perfil.this, Perfil.class);
+                                            startActivity(intent);
+                                        }
+                                        else {
+                                            try {
+                                                Toast.makeText(Perfil.this, Objects.requireNonNull(response.errorBody()).string(), Toast.LENGTH_SHORT).show();
+                                            } catch (IOException e) {
+                                                e.printStackTrace();
+                                            }
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onFailure(Call<Void> call, Throwable t) {
+
+                                    }
+                                });
+
+
+                            }catch (Exception e){
+                                e.printStackTrace();
+                            }
+                        }
+                    });
+
 
 
                 }
@@ -197,6 +338,18 @@ public class Perfil extends AppCompatActivity {
             }
         });
     }
+    public boolean validar(String n){
+
+        System.out.println(n);
+
+        if(n.isEmpty() || n.equals(" ")){
+
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
     public void Inico (View view){
 
         Intent intent = new Intent(Perfil.this,Inicio.class);
@@ -224,12 +377,60 @@ public class Perfil extends AppCompatActivity {
         name.setEnabled(true);
         surname.setEnabled(true);
         birthday.setEnabled(true);
-        position.setEnabled(true);
+        position.setVisibility(View.INVISIBLE);
         prefsmash.setEnabled(true);
         timeplay.setEnabled(true);
         matchaname.setEnabled(true);
         club.setEnabled(true);
         license.setEnabled(true);
+        phone.setEnabled(true);
+        cancelar.setVisibility(View.VISIBLE);
+        iniciar.setVisibility(View.INVISIBLE);
+        actualizar.setVisibility(View.VISIBLE);
+        rigth.setVisibility(View.VISIBLE);
+        left.setVisibility(View.VISIBLE);
+
+
+
+
+    }
+    public void cancelarCambios(View view){
+
+        mail.setEnabled(false);
+        sex.setEnabled(false);
+        rol.setEnabled(false);
+        name.setEnabled(false);
+        surname.setEnabled(false);
+        birthday.setEnabled(false);
+        position.setEnabled(false);
+        position.setVisibility(View.VISIBLE);
+        prefsmash.setEnabled(false);
+        timeplay.setEnabled(false);
+        matchaname.setEnabled(false);
+        club.setEnabled(false);
+        license.setEnabled(false);
+        cancelar.setVisibility(View.INVISIBLE);
+        iniciar.setVisibility(View.VISIBLE);
+        actualizar.setVisibility(View.INVISIBLE);
+        rigth.setVisibility(View.INVISIBLE);
+        left.setVisibility(View.INVISIBLE);
+
+    }
+    private void cargarImagen(){
+        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        intent.setType("image/");
+        startActivityForResult(intent.createChooser(intent,"Selecciona la imagen"), 10);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode==RESULT_OK){
+            Uri path = data.getData();
+            img_photo.setImageURI(path);
+            System.out.println(path);
+            
+        }
     }
 
 
