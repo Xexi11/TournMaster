@@ -7,161 +7,107 @@
     android:background="@color/backgroundColor"
     tools:context=".Perfil">
 
-    <ScrollView
-        android:layout_width="377dp"
-        android:layout_height="365dp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/menuBottom"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_rol"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintTop_toBottomOf="@+id/button2"
+        app:layout_constraintVertical_bias="1.0"
+        app:menu="@menu/menu_bottom" >
 
-        <LinearLayout
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+    <ScrollView
+        android:id="@+id/scrollView4"
+        android:layout_width="372dp"
+        android:layout_height="604dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.589"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.014">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/scrollView2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="wrap_content">
 
-            <EditText
-                android:id="@+id/text_name"
-                android:layout_width="match_parent"
-                android:layout_height="44dp"
-                android:autofillHints=""
-                android:ems="10"
-                android:enabled="false"
-                android:inputType="textPersonName"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.863"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/text_sexo"
-                app:layout_constraintVertical_bias="0.035" />
-
-            <EditText
-                android:id="@+id/text_surname"
-                android:layout_width="match_parent"
-                android:layout_height="44dp"
-                android:autofillHints=""
-                android:ems="10"
-                android:enabled="false"
-                android:inputType="textPersonName"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.863"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/text_sexo"
-                app:layout_constraintVertical_bias="0.035" />
 
             <EditText
                 android:id="@+id/text_birthday"
-                android:layout_width="match_parent"
-                android:layout_height="44dp"
+                android:layout_width="371dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="8dp"
                 android:autofillHints=""
                 android:ems="10"
                 android:enabled="false"
                 android:inputType="textPersonName"
                 android:text="@string/fecha_de_nacimiento"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.863"
+                app:layout_constraintHorizontal_bias="0.333"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/text_sexo"
-                app:layout_constraintVertical_bias="0.035" />
+                app:layout_constraintTop_toBottomOf="@+id/text_mail" />
 
             <EditText
-                android:id="@+id/text_position"
-                android:layout_width="match_parent"
-                android:layout_height="44dp"
+                android:id="@+id/text_mail"
+                android:layout_width="367dp"
+                android:layout_height="37dp"
                 android:autofillHints=""
                 android:ems="10"
                 android:enabled="false"
                 android:inputType="textPersonName"
-                android:text="@string/posici_n_en_la_pista"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.863"
+                app:layout_constraintHorizontal_bias="0.227"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/text_sexo"
-                app:layout_constraintVertical_bias="0.035" />
+                app:layout_constraintTop_toBottomOf="@+id/ed_surname" />
 
-            <EditText
-                android:id="@+id/text_matchname"
-                android:layout_width="match_parent"
-                android:layout_height="44dp"
-                android:autofillHints=""
-                android:ems="10"
-                android:enabled="false"
-                android:inputType="textPersonName"
-                android:text="@string/tu_pareja_favorita"
-                app:layout_constraintBottom_toBottomOf="parent"
+            <Button
+                android:id="@+id/btn_actualizarperfil"
+                android:layout_width="135dp"
+                android:layout_height="21dp"
+                android:background="@drawable/borde_redondo"
+                android:onClick="editar"
+                android:text="@string/Actualizar_perfil"
+                android:textColor="#FFFFFF"
+                android:visibility="invisible"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.863"
+                app:layout_constraintHorizontal_bias="0.978"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/text_sexo"
-                app:layout_constraintVertical_bias="0.035" />
+                app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
-            <EditText
-                android:id="@+id/text_timeplay"
-                android:layout_width="match_parent"
-                android:layout_height="44dp"
-                android:autofillHints=""
-                android:ems="10"
-                android:enabled="false"
-                android:inputType="textPersonName"
-                android:text="@string/tiempo_jugado"
-                app:layout_constraintBottom_toBottomOf="parent"
+            <Button
+                android:id="@+id/btn_cancelar"
+                android:layout_width="135dp"
+                android:layout_height="21dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/borde_redondo"
+                android:onClick="cancelarCambios"
+                android:text="@string/cancelar_edicion"
+                android:textColor="#FFFFFF"
+                android:visibility="invisible"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.863"
+                app:layout_constraintHorizontal_bias="0.985"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/text_sexo"
-                app:layout_constraintVertical_bias="0.035" />
+                app:layout_constraintTop_toBottomOf="@+id/btn_actualizarperfil" />
 
-            <EditText
-                android:id="@+id/text_prefsmash"
-                android:layout_width="match_parent"
-                android:layout_height="44dp"
-                android:autofillHints=""
-                android:ems="10"
-                android:enabled="false"
-                android:inputType="textPersonName"
-                android:text="@string/golpeo_preferido"
-                app:layout_constraintBottom_toBottomOf="parent"
+            <Button
+                android:id="@+id/inciarButton"
+                android:layout_width="135dp"
+                android:layout_height="21dp"
+                android:background="@drawable/borde_redondo"
+                android:onClick="editar"
+                android:text="@string/editar_perfil"
+                android:textColor="#FFFFFF"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.863"
+                app:layout_constraintHorizontal_bias="0.985"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/text_sexo"
-                app:layout_constraintVertical_bias="0.035" />
-
-            <EditText
-                android:id="@+id/text_club"
-                android:layout_width="match_parent"
-                android:layout_height="44dp"
-                android:autofillHints=""
-                android:ems="10"
-                android:enabled="false"
-                android:inputType="textPersonName"
-                android:text="@string/tu_club"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.863"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/text_sexo"
-                app:layout_constraintVertical_bias="0.035" />
-
-            <EditText
-                android:id="@+id/text_license"
-                android:layout_width="match_parent"
-                android:layout_height="44dp"
-                android:autofillHints=""
-                android:ems="10"
-                android:enabled="false"
-                android:inputType="textPersonName"
-                android:text="@string/licencia"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.863"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/text_sexo"
-                app:layout_constraintVertical_bias="0.035" />
+                app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
             <Button
                 android:id="@+id/btn_tencarSessio"
@@ -169,153 +115,252 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="#06F0C1"
                 android:onClick="cerrarSession"
-                android:text="@string/cerrar_sesi_n" />
-        </LinearLayout>
+                android:text="@string/cerrar_sesi_n"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ed_license" />
+
+            <EditText
+                android:id="@+id/ed_license"
+                android:layout_width="367dp"
+                android:layout_height="38dp"
+                android:ems="10"
+                android:enabled="false"
+                android:hint="@string/licencia"
+                android:inputType="textPersonName"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ed_timeplay" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cardView"
+                android:layout_width="369dp"
+                android:layout_height="99dp"
+                android:layout_marginTop="4dp"
+                android:background="#FFFFFF"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/text_users"
+                    android:layout_width="151dp"
+                    android:layout_height="24dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="104dp"
+                    android:text="@string/nombre_usuario"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <EditText
+                    android:id="@+id/text_rol"
+                    android:layout_width="130dp"
+                    android:layout_height="36dp"
+                    android:layout_marginTop="24dp"
+                    android:autofillHints=""
+                    android:ems="10"
+                    android:enabled="false"
+                    android:inputType="textPersonName"
+                    android:textSize="8sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/imageView"
+                    app:layout_constraintHorizontal_bias="0.497"
+                    app:layout_constraintStart_toStartOf="@+id/img_perfil"
+                    app:layout_constraintTop_toTopOf="@+id/text_users"
+                    app:layout_constraintVertical_bias="0.058" />
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="113dp"
+                    android:layout_height="74dp"
+                    android:contentDescription="@string/tourmasterlogo"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.137"
+                    app:srcCompat="@mipmap/tournmaster" />
+
+                <EditText
+                    android:id="@+id/text_sexo"
+                    android:layout_width="72dp"
+                    android:layout_height="29dp"
+                    android:autofillHints=""
+                    android:ems="10"
+                    android:enabled="false"
+                    android:inputType="textPersonName"
+                    android:textSize="8sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.4"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.942" />
+
+                <ImageView
+                    android:id="@+id/img_perfil"
+                    android:layout_width="114dp"
+                    android:layout_height="73dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.166"
+                    app:srcCompat="@mipmap/user" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/tittle_datos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="148dp"
+                android:text="@string/tus_datos"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.502"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/cardView" />
+
+            <EditText
+                android:id="@+id/ed_name"
+                android:layout_width="373dp"
+                android:layout_height="46dp"
+                android:layout_marginTop="16dp"
+                android:ems="10"
+                android:enabled="false"
+                android:hint="@string/Nombre_real"
+                android:inputType="textPersonName"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.444"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tittle_datos" />
+
+            <EditText
+                android:id="@+id/ed_surname"
+                android:layout_width="366dp"
+                android:layout_height="39dp"
+                android:ems="10"
+                android:enabled="false"
+                android:hint="@string/tu_surname"
+                android:inputType="textPersonName"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.333"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ed_name" />
+
+            <TextView
+                android:id="@+id/tittle_posic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="56dp"
+                android:text="@string/Posicion"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.484"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_birthday" />
+
+            <EditText
+                android:id="@+id/ed_matchname"
+                android:layout_width="374dp"
+                android:layout_height="38dp"
+                android:layout_marginTop="2dp"
+                android:ems="10"
+                android:enabled="false"
+                android:hint="@string/tu_pareja_favorita"
+                android:inputType="textPersonName"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.523"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ed_position" />
+
+            <EditText
+                android:id="@+id/ed_smash"
+                android:layout_width="370dp"
+                android:layout_height="38dp"
+                android:layout_marginTop="7dp"
+                android:ems="10"
+                android:enabled="false"
+                android:hint="@string/golpeo_preferido"
+                android:inputType="textPersonName"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ed_matchname" />
+
+            <EditText
+                android:id="@+id/ed_club"
+                android:layout_width="371dp"
+                android:layout_height="38dp"
+                android:ems="10"
+                android:enabled="false"
+                android:hint="@string/tu_club"
+                android:inputType="textPersonName"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ed_smash" />
+
+            <EditText
+                android:id="@+id/ed_timeplay"
+                android:layout_width="372dp"
+                android:layout_height="38dp"
+                android:ems="10"
+                android:hint="@string/tiempo_jugado"
+                android:inputType="textPersonName"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.444"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ed_club" />
+
+            <EditText
+                android:id="@+id/ed_position"
+                android:layout_width="364dp"
+                android:layout_height="50dp"
+                android:ems="10"
+                android:enabled="false"
+                android:hint="@string/Posicion"
+                android:inputType="textPersonName"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tittle_posic" />
+
+            <EditText
+                android:id="@+id/ed_phone"
+                android:layout_width="368dp"
+                android:layout_height="40dp"
+                android:ems="10"
+                android:enabled="false"
+                android:hint="@string/telefono"
+                android:inputType="textPersonName"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.503"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_birthday" />
+
+            <RadioButton
+                android:id="@+id/rdbtn_right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/pos_derecha"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.233"
+                app:layout_constraintStart_toStartOf="@+id/ed_position"
+                app:layout_constraintTop_toTopOf="@+id/ed_position" />
+
+            <RadioButton
+                android:id="@+id/rdbtn_left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/pos_izquierda"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.665"
+                app:layout_constraintStart_toStartOf="@+id/ed_position"
+                app:layout_constraintTop_toTopOf="@+id/ed_position" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
-
-    <Button
-        android:id="@+id/inciarButton"
-        android:layout_width="135dp"
-        android:layout_height="21dp"
-        android:background="@drawable/borde_redondo"
-        android:onClick="editar"
-        android:text="@string/editar_perfil"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.934"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.123" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="134dp"
-        android:layout_height="75dp"
-        android:contentDescription="@string/tourmasterlogo"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.935"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.007"
-        app:srcCompat="@mipmap/tournmaster" />
-
-    <TextView
-        android:id="@+id/text_users"
-        android:layout_width="150dp"
-        android:layout_height="75dp"
-        android:text="@string/nombre_usuario"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.417"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.041" />
-
-    <ImageView
-        android:id="@+id/img_user"
-        android:layout_width="84dp"
-        android:layout_height="81dp"
-        android:contentDescription="@string/fotousuario"
-        android:src="@mipmap/jugadora1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.073"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.041" />
-
-    <EditText
-        android:id="@+id/text_mail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:autofillHints=""
-        android:ems="10"
-        android:enabled="false"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.121"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_users"
-        app:layout_constraintVertical_bias="0.087" />
-
-    <EditText
-        android:id="@+id/text_rol"
-        android:layout_width="91dp"
-        android:layout_height="36dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:enabled="false"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.865"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_sexo"
-        app:layout_constraintVertical_bias="0.074" />
-
-    <EditText
-        android:id="@+id/text_sexo"
-        android:layout_width="90dp"
-        android:layout_height="42dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:enabled="false"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.862"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inciarButton"
-        app:layout_constraintVertical_bias="0.077" />
-
-    <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="409dp"
-        android:layout_height="60dp"
-        android:background="#6595C0"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.997">
-
-        <ImageView
-            android:id="@+id/btn_torneo"
-            android:layout_width="150dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:onClick="Inico"
-            app:srcCompat="@mipmap/copa" />
-
-        <ImageView
-            android:id="@+id/btn_partidos"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:onClick="partidos"
-            app:srcCompat="@mipmap/pelotaaas" />
-
-        <ImageView
-            android:id="@+id/btn_search"
-            android:layout_width="150dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:onClick="search"
-            app:srcCompat="@mipmap/search" />
-
-        <ImageView
-            android:id="@+id/btn_perfil"
-            android:layout_width="150dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:onClick="perfil"
-            app:srcCompat="@mipmap/user" />
-
-    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

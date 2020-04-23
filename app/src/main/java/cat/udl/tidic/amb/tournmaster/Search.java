@@ -7,16 +7,14 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.ListAdapter;
-import android.widget.ListView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.gson.JsonObject;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,6 +44,38 @@ public class Search extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        bottomNavigationView.setSelectedItemId(R.id.Buscar);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                switch(menuItem.getItemId()){
+                    case R.id.Inicio:
+                        startActivity(new Intent(getApplicationContext(),
+                                Inicio.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.Partidos:
+                        startActivity(new Intent(getApplicationContext(),
+                                Partidos.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.Buscar:
+                        startActivity(new Intent(getApplicationContext(),
+                                Search.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.Perfil:
+                        startActivity(new Intent(getApplicationContext(),
+                                Perfil.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                }
+                return false;
+            }
+        });
 
         playersListView = findViewById(R.id.playersList);
         playersListView.setLayoutManager(new LinearLayoutManager(this));
@@ -86,6 +116,11 @@ public class Search extends AppCompatActivity {
                     // Notificar problemes amb la red
             }
         });
+
+    }
+    private void EntrarPerfil(){
+
+
 
     }
 

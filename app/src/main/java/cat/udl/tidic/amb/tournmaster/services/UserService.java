@@ -13,6 +13,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 
 public interface UserService {
 
@@ -25,9 +26,21 @@ public interface UserService {
         @GET("/users")
         Call<List<User>> getUsers(@Header("Authorization") String auth_token);
 
+        @GET("/users/show/{username}")
+        Call<List<User>> getPerfilPublico(@Header("Authorization") String auth_token,String username);
+
+
         @Headers({"Content-type:application/json"})
         @POST("/users/register")
         Call<Void> createUser(@Body JsonObject userJson);
+
+        @Headers({"Content-type:application/json"})
+        @PUT("/users/register")
+        Call<Void>updateUser(@Body JsonObject userJson);
+
+        @Headers({"Content-type:application/json"})
+        @POST("/account/profile/update_profile_image")
+        Call<ResponseBody>updateImage(@Header("Authorization") String auth_token);
 
         @Headers({"Content-type:application/json"})
         @POST("/account/create_token")
