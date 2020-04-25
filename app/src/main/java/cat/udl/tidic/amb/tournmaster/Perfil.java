@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -92,6 +93,9 @@ public class Perfil extends AppCompatActivity {
                         startActivity(new Intent(getApplicationContext(),
                                 Perfil.class));
                         overridePendingTransition(0,0);
+
+
+
                         return true;
 
                 }
@@ -432,6 +436,10 @@ public class Perfil extends AppCompatActivity {
             
         }
     }
-
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.perfil_button,menu);
+        return true;
+    }
 
 }
