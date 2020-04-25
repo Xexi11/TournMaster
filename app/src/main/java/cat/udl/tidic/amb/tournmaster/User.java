@@ -25,6 +25,8 @@ public class User {
     @SerializedName("password")
     private String password;
 
+    // @JordiMateoUdl: Aqui tots els camps amb SerializedName aixi no caldrà treballar amb JSON...
+
 
 
     public User( String username, String email, String name, String surname, String genere,String password) {
