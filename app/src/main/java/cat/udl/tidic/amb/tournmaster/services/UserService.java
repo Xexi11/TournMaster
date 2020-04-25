@@ -19,9 +19,27 @@ public interface UserService {
 
     //metodes per fer les instancies a la base de dades tan como get i post!:
 
-        //@Headers("Authorization:656e50e154865a5dc469b80437ed2f963b8f58c8857b66c9bf")
+        // Accounts
+        /*
+         * @JordiMateoUdl: Heu de diferenciar el registre de la operació d'actualitzar el perfil!!!
+         */
+
         @GET("/account/profile")
         Call<JsonObject> getUserProfile(@Header("Authorization") String auth_token);
+
+        @PUT("/account/update_profile")
+        Call<Void> updateAccount(@Header("Authorization") String auth_token, @Body JsonObject userJson);
+
+        @POST("/account/profile/update_profile_image")
+        Call<ResponseBody>updateImage(@Header("Authorization") String auth_token);
+
+        @POST("/account/create_token")
+        Call<ResponseBody>createToken(@Header("Authorization") String auth_token);
+
+        @POST("account/delete_token")
+        Call<ResponseBody>deleteToken(@Header("Authorization") String auth_token);
+
+        // Users
 
         @GET("/users")
         Call<List<User>> getUsers(@Header("Authorization") String auth_token);
@@ -29,28 +47,8 @@ public interface UserService {
         @GET("/users/show/{username}")
         Call<List<User>> getPerfilPublico(@Header("Authorization") String auth_token,String username);
 
-
-        @Headers({"Content-type:application/json"})
         @POST("/users/register")
         Call<Void> createUser(@Body JsonObject userJson);
-
-        @Headers({"Content-type:application/json"})
-        @PUT("/users/register")
-        Call<Void>updateUser(@Body JsonObject userJson);
-
-        @Headers({"Content-type:application/json"})
-        @POST("/account/profile/update_profile_image")
-        Call<ResponseBody>updateImage(@Header("Authorization") String auth_token);
-
-        @Headers({"Content-type:application/json"})
-        @POST("/account/create_token")
-        Call<ResponseBody>createToken(@Header("Authorization") String auth_token);
-        @Headers({"Content-type:application/json"})
-
-        @DELETE("account/delete_token")
-        Call<ResponseBody>deleteToken(@Header("Authorization") String auth_token);
-
-
 
 
 }

@@ -240,13 +240,16 @@ public class Perfil extends AppCompatActivity {
                             JsonObject user_json = new JsonObject();
                             try {
 
+                                    // @JordiMateoUdL: Heu de vigilar la property té que tenir el mateix nom que a models del python, sinó error :)
+                                    // Si s'envieen sempre tots els camps -> afegiu tots els camps a User i despres enlloc d'enviar un JSON envieu el Usuari
+                                    // Molt més net i us evitareu errors tontos...
+
                                     user_json.addProperty("username", name.getText().toString());
                                     user_json.addProperty("surname", surname.getText().toString());
-                                    user_json.addProperty("mail", mail.getText().toString());
+                                    user_json.addProperty("email", mail.getText().toString());
                                     user_json.addProperty("phone", phone.getText().toString());
                                     user_json.addProperty("matchname", matchaname.getText().toString());
                                     user_json.addProperty("prefsmash", prefsmash.getText().toString());
-                                    user_json.addProperty("phone", phone.getText().toString());
                                     user_json.addProperty("club", club.getText().toString());
 
 
@@ -255,7 +258,7 @@ public class Perfil extends AppCompatActivity {
 
                                     System.out.println("Debe selecionar una posicion");
 
-                                Call<Void>call = userService.updateUser(user_json);
+                                Call<Void>call = userService.updateAccount(token, user_json);
                                 call.enqueue(new Callback<Void>() {
                                     @Override
                                     public void onResponse(Call<Void> call, Response<Void> response) {
