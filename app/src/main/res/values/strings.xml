@@ -58,5 +58,8 @@
     <string name="pos_izquierda">Izquierda</string>
     <string name="Posicion">Tu Posición</string>
     <string name="Nombre_real">Tu Nombre</string>
+    <string name="Selecciona_Imagen">Selecciona una imagen</string>
+    <string name="Abrir">Abrir Galeria</string>
+    <string name="Cancelar">Cancelar</string>
 
 </resources>

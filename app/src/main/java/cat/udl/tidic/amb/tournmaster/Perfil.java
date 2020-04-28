@@ -2,7 +2,6 @@ package cat.udl.tidic.amb.tournmaster;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
@@ -17,7 +16,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -127,7 +125,7 @@ public class Perfil extends AppCompatActivity {
 
         img_photo.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                cargarImagen();
+                openDialog();
             }
         });
 
@@ -423,26 +421,20 @@ public class Perfil extends AppCompatActivity {
         left.setVisibility(View.INVISIBLE);
 
     }
-    private void cargarImagen(){
-        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        intent.setType("image/");
-        startActivityForResult(intent.createChooser(intent,"Selecciona la imagen"), 10);
-    }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode==RESULT_OK){
-            Uri path = data.getData();
-            img_photo.setImageURI(path);
-            System.out.println(path);
-            
-        }
-    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.perfil_button,menu);
         return true;
+    }
+    public void openDialog() {
+        DialogFilter dialogFilter = new DialogFilter();
+        dialogFilter.show(getSupportFragmentManager(),"example_dialog");
+    }
+    private void cargarImagen(){
+        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        intent.setType("image/");
+        startActivityForResult(intent.createChooser(intent,"Selecciona la imagen"), 10);
     }
 
 }
