@@ -23,6 +23,8 @@ import com.google.gson.JsonObject;
 
 import java.io.IOException;
 import java.util.Objects;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import cat.udl.tidic.amb.tournmaster.preferences.PreferencesProvider;
 import cat.udl.tidic.amb.tournmaster.services.UserService;
@@ -182,9 +184,12 @@ public class Perfil extends AppCompatActivity {
                     club.setText(atributs(user_club));
                     String user_phone= (userJson.get("phone").toString());
                     phone.setText(atributs(user_phone));
+                    isValidPhoneNumber(phone.getText().toString());
 
                     String user_mail = userJson.get("email").toString();
                     mail.setText(atributs(user_mail));
+                    isValidEmailAddress(mail.getText().toString());
+
                     String user_sex= userJson.get("genere").toString();
                     user_sex = user_sex.substring(1,user_sex.length()-1);
                     Log.d("TAG",user_sex);
@@ -436,5 +441,28 @@ public class Perfil extends AppCompatActivity {
         intent.setType("image/");
         startActivityForResult(intent.createChooser(intent,"Selecciona la imagen"), 10);
     }
+
+    public boolean isValidEmailAddress(String email){
+        final String MAIL_PATTERN =
+                "^[\\w-_.+]*[\\w-_.]@([\\w]+\\.)+[\\w]+[\\w]$";
+        return email.matches(MAIL_PATTERN);
+    }
+    public boolean isValidPassword(final String password) {
+        Pattern pattern; Matcher matcher;
+        final String PASSWORD_PATTERN =
+                "^(?=.*[0-9])(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=\\S+$).{8,}$";
+        pattern = Pattern.compile(PASSWORD_PATTERN);
+        matcher = pattern.matcher(password);
+        return matcher.matches();
+    }
+
+    public boolean isValidPhoneNumber(final String phonenumber){
+
+        final String numeros =
+                "(6|7)[ -]*([0-9][ -]*){9}$";
+        return phonenumber.matches(numeros);
+
+    }
+
 
 }
